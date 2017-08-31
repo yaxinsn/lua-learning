@@ -1,16 +1,16 @@
 
 
 a = 9
---[[if a > nil then
+--INT 不能与 nil做大小比较，代码会执行出错。
+if a > nil then
 	print("a> nil")
 
 else
 
 	print("a !> nil");
 end
---]]
 
-
-if a ~= nil then
+--但是可以使用== ~=进行比较。
+if a == nil then
 	print("a ~= nil")
 end
