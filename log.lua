@@ -13,3 +13,8 @@ function log(file, ...)
 	f:write("\n")
 	f:close();
 end
+
+
+function my_log(...)
+	log("/tmp/cgi.log",...);
+end
