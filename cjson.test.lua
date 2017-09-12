@@ -1,6 +1,4 @@
 
---package.path = '/usr/local/share/lua/5.1/?.lua;/home/resty/?.lua;./lib/?.lua;'
---package.cpath = '/usr/local/lib/lua/5.1/?.so;./lib/?.so;' 
 
 
 function dirname(str)  
@@ -25,8 +23,8 @@ print("fff " .. __FILE__ .. "  dir :" .. dirname(__FILE__) .. "\n");
 --PWD=os.getenv("PWD");
 --dofile(dirname(__FILE__) .. "/lib/lib_path.lua");
 DIR=dirname(__FILE__);
-package.path = '/usr/local/share/lua/5.1/?.lua;' .. DIR .. '/lib/?.lua;'
-package.cpath = '/usr/local/lib/lua/5.1/?.so;' .. DIR .. '/lib/?.so;'  
+package.path = '/usr/local/share/lua/5.1/?.lua;' .. DIR .. 'lib/?.lua;'
+package.cpath = '/usr/local/lib/lua/5.1/?.so;' .. DIR .. 'lib/?.so;'  
 local cjson=require("cjson")
 
 
