@@ -1,4 +1,4 @@
-Set = {}
+Set = {} --这里的Set更像是一个定义好的Table，这里全是函数，函数的集合吧，类似一个Set的库。
 function Set.new (t)
 	local set = {}
 	for _, l in ipairs(t) do set[l] = true end
