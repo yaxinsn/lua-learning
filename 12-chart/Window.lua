@@ -16,6 +16,15 @@ end
 
 Window.mt.__index = Window.prototype;
 
+
+Window.mt.__newindex = function(table, key,v)
+	print("can't set this key <" .. key .. "> bye");
+end
+
+Window.mt.__newindex = Window.prototype;
+
+
+
 --以上是Window库的定义。
 --以下是使用。
 --当 Lua 发现 w 不存在域 width 时，但是有一个 metatable 带有__index 域，Lua 使用
@@ -25,4 +34,5 @@ w = Window.new{x=10, y=20}
 
 print(w.width)  
 
-
+w.yyyy=9;
+print(w.yyyy)  
