@@ -10,9 +10,11 @@ function Window.new (o)
 	return o
 end
 Window.mt.__index = function (table, key) --定义了一个__index，这是个关键字，表示一个运算符所对应的处理函数。
-	return Window.prototype[key]
+	--return Window.prototype[key]
+	return "no this key <" .. key .. "> bye"
 end
 
+Window.mt.__index = Window.prototype;
 
 --以上是Window库的定义。
 --以下是使用。
