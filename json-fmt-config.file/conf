@@ -99,18 +99,24 @@ argc=table.getn(arg);
 if arg[1] == "get" then
 	if argc == 1 then
 		serialize(table_a);
+		os.exit();
 	elseif argc == 2 then
-		serialize(table_a[arg[2]]);
+		if table_a[arg[2]] == nil then
+			print "NA"
+		else
+			serialize(table_a[arg[2]]);
+		end
+		os.exit();
 		end
 end
 
 if arg[1] == "set" then
 	if argc == 3 then
 		table_a[arg[2]] = arg[3];
-write_fmt_table("base.config",table_a);
+		write_fmt_table("base.config",table_a);
+		os.exit();
 	end
 end
 help=[[conf get param
 conf set param value]]
 print(help);
-os.exit();
