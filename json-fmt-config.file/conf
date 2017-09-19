@@ -53,7 +53,7 @@ function _read_all_config(file)
 
 	local f = io.open(file,"r");
 	if f == nil then
-		print("f is null ");
+		--print("f is null ");
 		return "{}";
 	end
 	t=f:read("*all");--读取整个文件。
