@@ -1,6 +1,7 @@
 #!/usr/bin/lua
 
 
+CONF_FILE="base.config"
 function dirname(str)  
     if str:match(".-/.-") then  
         local name = string.gsub(str, "(.*/)(.+)", "%1")  
@@ -50,21 +51,25 @@ end
 config_={}; --这是一个空的table
 function _read_all_config(file)
 
-	local f = assert(io.open(file,"r"));
+	local f = io.open(file,"r");
+	if f == nil then
+		print("f is null ");
+		return "{}";
+	end
 	t=f:read("*all");--读取整个文件。
 	f:close();
 	--print("t: " .. t);	
 	return t;
 end
 function _write_all_config(file,buf)
-	local f =assert(io.open(file,"w"));
+	local f =io.open(file,"w");
 	f:write(buf);
 	f:close();
 end
 
 function read_fmt_table(file)
 	local raw=_read_all_config(file);
-	local table__=cjson.decode(raw);--把json字符串变成table
+	local table__=cjson.decode(raw);   --把json字符串变成table
 	return table__;
 
 end
@@ -76,7 +81,6 @@ function write_fmt_table(file,buf)
 
 end
 
-table_a = read_fmt_table "base.config"
 --[[
 for i,v in pairs(table_a) do
     if type(v) ~= "table" then
@@ -95,7 +99,8 @@ end
 --
 
 argc=table.getn(arg);
-
+table_a={};
+table_a = read_fmt_table(CONF_FILE);
 if arg[1] == "get" then
 	if argc == 1 then
 		serialize(table_a);
@@ -113,7 +118,7 @@ end
 if arg[1] == "set" then
 	if argc == 3 then
 		table_a[arg[2]] = arg[3];
-		write_fmt_table("base.config",table_a);
+		write_fmt_table(CONF_FILE,table_a);
 		os.exit();
 	end
 end
