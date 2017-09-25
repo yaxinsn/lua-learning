@@ -23,4 +23,4 @@ producer = coroutine.create( function ()
 end)
 
 
-consumer(); //step1
+consumer(); --step1

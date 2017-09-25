@@ -2,7 +2,7 @@
 
 function list_array(arr)
 
-	print(arr);
+	print(arr); --这里输出的arr地址=A
 
 	local i = 1;
 	local iter = ""
@@ -14,5 +14,5 @@ function list_array(arr)
 end
 
 strs={"aa","bb","cc","dd"}
-print(strs);
+print(strs);--这里输出的地址也是A。
 list_array(strs);
